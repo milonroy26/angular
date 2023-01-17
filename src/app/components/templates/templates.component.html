@@ -1,4 +1,46 @@
+<app-header></app-header>
+<div class="container py-3">
+    <h4>Displaying values with interpolation</h4>
+    <p> My name is {{name}} </p>
+    <img src="{{image}}" alt="">
 
-<div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, magni.</p>
+    <hr>
+
+    <h4>Class and style binding</h4>
+    <p [style.color]=" 'orange' ">Binding to a single style</p>
+    <p [ngStyle]="multiple">Binding to multiple styles</p>
+
+    <hr>
+
+    <h4>Event binding</h4>
+    <p> {{binding}} </p>
+    <button (click)="showMessage()">Show Message</button>
+
+    <hr>
+
+    <h4>Property binding</h4>
+    <img [src]="image" alt="">
+    <button [disabled]="true" >Disabled Button</button>
+
+    <hr>
+
+    <h4>Two-way binding</h4>
+    <input placeholder="Your name" type="text" [(ngModel)]="yourName" >
+    <p>{{yourName}}</p>
+
+    <hr>
+
+    <h4>Nf For</h4>
+    
+    <div class="d-flex justify-content-between">
+        <div *ngFor="let item of users" class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"> {{item.name}} {{item.username}} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">Email: {{item.email}} </h6>
+              <p class="card-text">Address : {{item.address.city}} <br>  Zipcode : {{item.address.zipcode}}  </p>
+              <a href="#" class="card-link">Card link</a>
+            </div>
+          </div>
+    </div>
+    
 </div>

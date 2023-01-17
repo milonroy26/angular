@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { TemplatesComponent } from './components/templates/templates.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormsModule } from '@angular/forms';
+import { ProductCartComponent } from './components/product-cart/product-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplatesComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProductCartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
