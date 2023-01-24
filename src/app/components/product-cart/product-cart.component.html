@@ -1,10 +1,20 @@
 <app-header></app-header>
 
+<app-notification></app-notification>
+
+<div class="container py-3 mt-3" [ngClass]="{changeBackground: searchValue !== ''}">
+    <div class="search-box d-flex align-items-center h-100">
+        <span class="fs-4">Search:</span>
+        <input [(ngModel)]="searchValue" placeholder="Search" class="form-control ms-4 w-25" type="search" name="" id="">
+        <h5 *ngIf="searchValue !== '' " class="ms-3"> You Search For: {{searchValue}} </h5>
+    </div>
+</div>
+
 <div class="container py-4" *ngFor="let item of products">
-    
-    <div class="product-container">
+
+    <div class="product-container" [ngStyle]="{backgroundColor: item.available == 'Available' ? '#EAFDFC' : '#F7F5EB'}">
         <div class="image-container">
-            <img [src]="item.images" alt="">
+            <img class="rounded-2" [src]="item.images" alt="">
         </div>
 
         <div>
@@ -13,7 +23,7 @@
             </div>
 
             <div class="detailBox d-flex justify-content-around">
-                <div class="details"> {{item.available}} </div>
+                <div [ngStyle]="{color: item.available == 'Available' ? 'green' : 'red'}" class="details"> {{item.available}} </div>
                 <div class="details ms-5">Price: {{item.price}} </div>
                 <div class="details ms-5">Color: {{item.color}} </div>
             </div>
@@ -21,9 +31,12 @@
 
         <div class="option">
             <button class="btn btn-success">Show Details</button>
-            <button class="btn btn-warning ms-3">Buy Now</button>
+            <button *ngIf="item.available == 'Available'; else motifyMe" class="btn btn-warning ms-3">Buy Now</button>            
+            <ng-template #motifyMe>
+                <button class="btn btn-warning ms-3">Modify Me</button>
+            </ng-template>
         </div>
 
     </div>
 
-</div>
+</div>        

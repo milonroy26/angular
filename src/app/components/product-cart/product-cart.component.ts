@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCartComponent implements OnInit {
 
+  public searchValue:string = '';
+
   public products = [
     {
       "id": 1,
